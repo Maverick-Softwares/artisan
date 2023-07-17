@@ -10,4 +10,5 @@ class AppString{
   static const set_password_title= "Don’t worry!";
   static const set_password_subtitle= "Don't reuse passwords across multiple accounts. Keep your password secure and confidential to protect your account.";
   static const otp_title="Enter OTP";
+  static const income_title="Add Income";
 }

@@ -1,13 +1,14 @@
 // ignore_for_file: prefer_const_literals_to_create_immutables, depend_on_referenced_packages, import_of_legacy_library_into_null_safe, prefer_const_constructors, avoid_unnecessary_containers, sized_box_for_whitespace, prefer_interpolation_to_compose_strings, avoid_print
+import 'package:artisan/pages/add_income_page.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter/material.dart';
 import '../utils/app_colors.dart';
 import '../utils/app_string.dart';
 import '../utils/theme.dart';
 import '../widgets/custom_text.dart';
-import 'package:otp_text_field/otp_field.dart';
 import 'package:otp_text_field/otp_text_field.dart';
 import 'package:otp_text_field/style.dart';
+import 'package:get/get.dart';
 
 class OTPPage extends StatefulWidget {
   const OTPPage({super.key});
@@ -75,10 +76,12 @@ class _OTPPageState extends State<OTPPage> {
                 ),
               ),
               SizedBox(
-                height: 50.h,
+                height: 70.h,
               ),
               GestureDetector(
-                // onTap: _forGot,
+                onTap: (){
+                  Get.to(()=>AddIncomePage());
+                },
                 child: Container(
                   height: 50.h,
                   decoration: BoxDecoration(
