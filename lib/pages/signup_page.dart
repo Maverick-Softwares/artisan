@@ -1,4 +1,4 @@
-// ignore_for_file: unused_field, depend_on_referenced_packages, prefer_final_fields, prefer_const_constructors, unused_import, use_key_in_widget_constructors
+// ignore_for_file: unused_field, depend_on_referenced_packages, prefer_final_fields, prefer_const_constructors, unused_import, use_key_in_widget_constructors, library_private_types_in_public_api
 
 import 'package:artisan/pages/login_page.dart';
 import 'package:artisan/utils/app_string.dart';
@@ -11,6 +11,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../utils/app_colors.dart';
 import '../utils/theme.dart';
+import '../widgets/custom_password_text_field.dart';
 import '../widgets/custom_text.dart';
 import '../widgets/custom_text_field.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -30,8 +31,6 @@ class _SignUpPageState extends State<SignUpPage> {
   TextEditingController _passwordController = TextEditingController();
   TextEditingController _confirmPasswordController = TextEditingController();
 
-  final _controller = Get.put(TextFieldController());
-
   void _signUp() async {
     String name = _nameController.text;
     String phone = _phoneController.text;
@@ -48,7 +47,7 @@ class _SignUpPageState extends State<SignUpPage> {
     } else if (phone.isEmpty) {
       Get.snackbar(
         'Oops!',
-        'Email field cannot be empty!',
+        'Phone Number field cannot be empty!',
         colorText: Colors.white,
         backgroundColor: Colors.redAccent,
       );
@@ -122,6 +121,7 @@ class _SignUpPageState extends State<SignUpPage> {
                     child: AppTextField(
                       Controller: _nameController,
                       hintText: 'Full Name',
+                      keyboard_type:TextInputType.text
                     ),
                   ),
                 ],
@@ -143,6 +143,7 @@ class _SignUpPageState extends State<SignUpPage> {
                     child: AppTextField(
                       Controller: _phoneController,
                       hintText: 'Phone Number',
+                      keyboard_type:TextInputType.number,
                     ),
                   ),
                 ],
@@ -161,48 +162,9 @@ class _SignUpPageState extends State<SignUpPage> {
                     width: 10.w,
                   ),
                   Expanded(
-                    child: Obx(
-                      () {
-                        return TextField(
-                          controller: _passwordController,
-                          decoration: InputDecoration(
-                            hintText: "Password",
-                            hintStyle: TextStyle(
-                              color: AppColors.iconColor,
-                              fontSize: 16.sp,
-                            ),
-                            suffixIcon: IconButton(
-                              icon: Icon(
-                                _controller.isPasswordHiden.value
-                                    ? Icons.visibility_off
-                                    : Icons.visibility,
-                              ),
-                              onPressed: () {
-                                _controller.isPasswordHiden.value =
-                                    !_controller.isPasswordHiden.value;
-                              },
-                            ),
-                            enabledBorder: UnderlineInputBorder(
-                              borderSide: BorderSide(
-                                color: AppColors.iconColor,
-                                width: 2,
-                              ),
-                            ),
-                            focusedBorder: UnderlineInputBorder(
-                              borderSide: BorderSide(
-                                color: AppColors.iconColor,
-                                width: 2,
-                              ),
-                            ),
-                            suffixIconColor: AppColors.iconColor,
-                            contentPadding: EdgeInsets.only(
-                              left: 10.w,
-                              top: 10.h,
-                            ), // Adjust the left padding as needed
-                          ),
-                          obscureText: _controller.isPasswordHiden.value,
-                        );
-                      },
+                    child: AppTextPasswordField(
+                      passwordController: _passwordController,
+                      hintText: "Password",
                     ),
                   ),
                 ],
@@ -221,48 +183,9 @@ class _SignUpPageState extends State<SignUpPage> {
                     width: 10.w,
                   ),
                   Expanded(
-                    child: Obx(
-                      () {
-                        return TextField(
-                          controller: _confirmPasswordController,
-                          decoration: InputDecoration(
-                            hintText: "Confirm Password",
-                            hintStyle: TextStyle(
-                              color: AppColors.iconColor,
-                              fontSize: 16.sp,
-                            ),
-                            suffixIcon: IconButton(
-                              icon: Icon(
-                                _controller.isConfirmPasswordHiden.value
-                                    ? Icons.visibility_off
-                                    : Icons.visibility,
-                              ),
-                              onPressed: () {
-                                _controller.isConfirmPasswordHiden.value =
-                                    !_controller.isConfirmPasswordHiden.value;
-                              },
-                            ),
-                            enabledBorder: UnderlineInputBorder(
-                              borderSide: BorderSide(
-                                color: AppColors.iconColor,
-                                width: 2,
-                              ),
-                            ),
-                            focusedBorder: UnderlineInputBorder(
-                              borderSide: BorderSide(
-                                color: AppColors.iconColor,
-                                width: 2,
-                              ),
-                            ),
-                            suffixIconColor: AppColors.iconColor,
-                            contentPadding: EdgeInsets.only(
-                              left: 10.w,
-                              top: 10.h,
-                            ), // Adjust the left padding as needed
-                          ),
-                          obscureText: _controller.isConfirmPasswordHiden.value,
-                        );
-                      },
+                    child: AppTextPasswordField(
+                      passwordController: _confirmPasswordController,
+                      hintText: "Confirm Password",
                     ),
                   ),
                 ],
@@ -290,29 +213,7 @@ class _SignUpPageState extends State<SignUpPage> {
               ),
               SizedBox(height: 30.h),
               Center(
-                child: RichText(
-                  text: TextSpan(
-                    text: "Already have an account?  ",
-                    style: TextStyle(
-                      fontSize: 16.sp,
-                      fontWeight: FontWeight.w500,
-                      color: Colors.black,
-                    ),
-                    children: [
-                      TextSpan(
-                        text: "Log In",
-                        style: TextStyle(
-                          fontSize: 18.sp,
-                          fontWeight: FontWeight.w600,
-                        ),
-                        recognizer: TapGestureRecognizer()
-                          ..onTap = () {
-                            Get.to(LoginPage());
-                          },
-                      ),
-                    ],
-                  ),
-                ),
+                child: richText(text:"Already have an account?  ",subtext:"Log In",page:LoginPage()),
               ),
             ],
           ),

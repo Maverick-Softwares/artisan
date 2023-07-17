@@ -8,16 +8,18 @@ class AppTextField extends StatelessWidget {
   AppTextField({
     Key? key,
     required this.Controller,
-    required this.hintText,
+    required this.hintText, required this.keyboard_type,
   }) : super(key: key);
 
   final TextEditingController Controller;
   final String hintText;
+  final TextInputType keyboard_type;
 
   @override
   Widget build(BuildContext context) {
     return Container(
       child: TextField(
+        keyboardType:keyboard_type,
         controller: Controller,
         decoration: InputDecoration(
           hintText: hintText,

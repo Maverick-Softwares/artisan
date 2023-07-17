@@ -9,6 +9,7 @@ import 'package:flutter/material.dart';
 import '../controllers/text_field_controller.dart';
 import '../utils/app_string.dart';
 import '../utils/theme.dart';
+import '../widgets/custom_password_text_field.dart';
 import '../widgets/custom_text.dart';
 import '../widgets/custom_text_field.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -106,6 +107,7 @@ class _LoginPageState extends State<LoginPage> {
                     child: AppTextField(
                       Controller: _phoneController,
                       hintText: 'Phone Number',
+                      keyboard_type:TextInputType.number,
                     ),
                   ),
                 ],
@@ -123,46 +125,12 @@ class _LoginPageState extends State<LoginPage> {
                   SizedBox(
                     width: 10.w,
                   ),
-                  Expanded(child: Obx(() {
-                    return TextField(
-                      controller: _passwordController,
-                      decoration: InputDecoration(
-                        hintText: "Password",
-                        hintStyle: TextStyle(
-                          color: AppColors.iconColor,
-                          fontSize: 16.sp,
-                        ),
-                        suffixIcon: IconButton(
-                          icon: Icon(
-                            _controller.isPasswordHiden.value
-                                ? Icons.visibility_off
-                                : Icons.visibility,
-                          ),
-                          onPressed: () {
-                            _controller.isPasswordHiden.value =
-                                !_controller.isPasswordHiden.value;
-                          },
-                        ),
-                        enabledBorder: UnderlineInputBorder(
-                          borderSide: BorderSide(
-                            color: AppColors.iconColor,
-                            width: 2,
-                          ),
-                        ),
-                        focusedBorder: UnderlineInputBorder(
-                          borderSide: BorderSide(
-                            color: AppColors.iconColor,
-                            width: 2,
-                          ),
-                        ),
-                        suffixIconColor: AppColors.iconColor,
-                        contentPadding: EdgeInsets.only(
-                            left: 10.w,
-                            top: 10.h), // Adjust the left padding as needed
-                      ),
-                      obscureText: _controller.isPasswordHiden.value,
-                    );
-                  })),
+                  Expanded(
+                    child: AppTextPasswordField(
+                      passwordController: _passwordController,
+                      hintText: "Password",
+                    ),
+                  ),
                 ],
               ),
               SizedBox(
