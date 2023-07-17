@@ -1,57 +1,33 @@
-// ignore_for_file: unused_field, depend_on_referenced_packages, prefer_final_fields, prefer_const_constructors, unused_import, use_key_in_widget_constructors, library_private_types_in_public_api
+// ignore_for_file: prefer_const_constructors, unnecessary_import, implementation_imports, unused_import, unused_field, prefer_final_fields, depend_on_referenced_packages, unused_element, unused_local_variable
 
-import 'package:artisan/pages/login_page.dart';
-import 'package:artisan/utils/app_string.dart';
-import 'package:flutter/cupertino.dart';
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import '../controllers/text_field_controller.dart';
+import 'package:flutter/src/widgets/framework.dart';
+import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
+import 'package:get/get.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import '../utils/app_colors.dart';
+import '../utils/app_string.dart';
 import '../utils/theme.dart';
 import '../widgets/custom_password_text_field.dart';
 import '../widgets/custom_text.dart';
-import '../widgets/custom_text_field.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
-import '../widgets/rich_text.dart';
-
-class SignUpPage extends StatefulWidget {
-  const SignUpPage({Key? key});
+class SetPassword extends StatefulWidget {
+  const SetPassword({super.key});
 
   @override
-  State<SignUpPage> createState() => _SignUpPageState();
+  State<SetPassword> createState() => _SetPasswordState();
 }
 
-class _SignUpPageState extends State<SignUpPage> {
-  TextEditingController _nameController = TextEditingController();
-  TextEditingController _phoneController = TextEditingController();
-  TextEditingController _passwordController = TextEditingController();
+class _SetPasswordState extends State<SetPassword> {
+  TextEditingController _newpasswordController = TextEditingController();
   TextEditingController _confirmPasswordController = TextEditingController();
 
-  void _signUp() async {
-    String name = _nameController.text;
-    String phone = _phoneController.text;
-    String password = _passwordController.text;
+  void _setPass() async{
+    String password = _newpasswordController.text;
     String confirmPassword = _confirmPasswordController.text;
 
-    if (name.isEmpty) {
-      Get.snackbar(
-        'Oops!',
-        'Name field cannot be empty!',
-        colorText: Colors.white,
-        backgroundColor: Colors.redAccent,
-      );
-    } else if (phone.isEmpty) {
-      Get.snackbar(
-        'Oops!',
-        'Phone Number field cannot be empty!',
-        colorText: Colors.white,
-        backgroundColor: Colors.redAccent,
-      );
-    } else if (password.isEmpty) {
+    if (password.isEmpty) {
       Get.snackbar(
         'Oops!',
         'Password field cannot be empty!',
@@ -83,6 +59,7 @@ class _SignUpPageState extends State<SignUpPage> {
       // Sign up logic
       // Redirect to the next page or perform necessary actions
     }
+    
   }
 
   @override
@@ -97,59 +74,23 @@ class _SignUpPageState extends State<SignUpPage> {
               Padding(
                 padding: EdgeInsets.symmetric(horizontal: 5.w),
                 child: Center(
-                  child: Image.asset("assets/images/signup.png", height: 300.h),
+                  child: Image.asset("assets/images/Forgot_password.png",
+                      height: 300.h),
                 ),
               ),
-              Text(
-                AppString.sign_up_title,
+               Text(
+                AppString.set_password_title,
                 style: loginStyle,
               ),
               SizedBox(
                 height: 5.h,
               ),
-              Row(
-                children: [
-                  Icon(
-                    CupertinoIcons.person,
-                    size: 25.sp,
-                    color: AppColors.iconColor,
-                  ),
-                  SizedBox(
-                    width: 5.w,
-                  ),
-                  Expanded(
-                    child: AppTextField(
-                      Controller: _nameController,
-                      hintText: 'Full Name',
-                      keyboard_type:TextInputType.text
-                    ),
-                  ),
-                ],
+              Text(
+                AppString.set_password_subtitle,
+                style: forgotStyle,
               ),
               SizedBox(
-                height: 5.h,
-              ),
-              Row(
-                children: [
-                  Icon(
-                    CupertinoIcons.phone,
-                    size: 25.sp,
-                    color: AppColors.iconColor,
-                  ),
-                  SizedBox(
-                    width: 5.w,
-                  ),
-                  Expanded(
-                    child: AppTextField(
-                      Controller: _phoneController,
-                      hintText: 'Phone Number',
-                      keyboard_type:TextInputType.number,
-                    ),
-                  ),
-                ],
-              ),
-              SizedBox(
-                height: 5.h,
+                height: 20.h,
               ),
               Row(
                 children: [
@@ -163,14 +104,14 @@ class _SignUpPageState extends State<SignUpPage> {
                   ),
                   Expanded(
                     child: AppTextPasswordField(
-                      passwordController: _passwordController,
-                      hintText: "Password",
+                      passwordController: _confirmPasswordController,
+                      hintText: "New Password",
                     ),
                   ),
                 ],
               ),
               SizedBox(
-                height: 5.h,
+                height: 10.h,
               ),
               Row(
                 children: [
@@ -194,7 +135,7 @@ class _SignUpPageState extends State<SignUpPage> {
                 height: 30.h,
               ),
               GestureDetector(
-                onTap: _signUp,
+                onTap: _setPass,
                 child: Container(
                   height: 50.h,
                   decoration: BoxDecoration(
@@ -210,13 +151,6 @@ class _SignUpPageState extends State<SignUpPage> {
                     ),
                   ),
                 ),
-              ),
-              SizedBox(height: 30.h),
-              Center(
-                child: RichTextWidget(text:"Already have an account?  ",subtext:"Log In",page:LoginPage()),
-              ),
-              SizedBox(
-                height: 20.h,
               ),
             ],
           ),

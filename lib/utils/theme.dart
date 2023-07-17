@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_constructors
+// ignore_for_file: prefer_const_constructors, unused_import, depend_on_referenced_packages
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -13,5 +13,11 @@ TextStyle get loginStyle{
           fontWeight: FontWeight.bold,
           color: Colors.black
       )
+  );
+}
+
+TextStyle get forgotStyle{
+  return GoogleFonts.poppins(
+      textStyle: TextStyle(fontSize: 14.sp,fontWeight: FontWeight.w400)
   );
 }

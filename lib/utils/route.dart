@@ -2,7 +2,7 @@
 import 'package:artisan/pages/login_page.dart';
 import 'package:get/get.dart';
 
-const String login = "/lgin_screen";
+const String login = "/login_screen";
 
 
 List<GetPage> getPages = [

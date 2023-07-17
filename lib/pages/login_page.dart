@@ -1,7 +1,8 @@
-// ignore_for_file: prefer_const_constructors, prefer_final_fields, depend_on_referenced_packages, unused_import
+// ignore_for_file: prefer_const_constructors, prefer_final_fields, depend_on_referenced_packages, unused_import, unused_field
 
 import 'package:artisan/pages/signup_page.dart';
 import 'package:artisan/utils/app_colors.dart';
+import 'package:artisan/pages/forgot_password.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
@@ -29,7 +30,6 @@ class _LoginPageState extends State<LoginPage> {
   TextEditingController _phoneController = TextEditingController();
   TextEditingController _passwordController = TextEditingController();
   final _controller = Get.put(TextFieldController());
-
 
   void _login() async {
     String phone = _phoneController.text;
@@ -107,7 +107,7 @@ class _LoginPageState extends State<LoginPage> {
                     child: AppTextField(
                       Controller: _phoneController,
                       hintText: 'Phone Number',
-                      keyboard_type:TextInputType.number,
+                      keyboard_type: TextInputType.number,
                     ),
                   ),
                 ],
@@ -138,12 +138,17 @@ class _LoginPageState extends State<LoginPage> {
               ),
               Align(
                 alignment: Alignment.bottomRight,
-                child: Text(
-                  "Forgot Password?",
-                  style: TextStyle(
-                    color: AppColors.buttomColor,
-                    fontSize: 16.sp,
-                    fontWeight: FontWeight.w400,
+                child: InkWell(
+                  onTap: () {
+                    Get.to(()=>ForgotPassword());
+                  },
+                  child: Text(
+                    "Forgot Password?",
+                    style: TextStyle(
+                      color: AppColors.buttomColor,
+                      fontSize: 16.sp,
+                      fontWeight: FontWeight.w400,
+                    ),
                   ),
                 ),
               ),
@@ -153,7 +158,7 @@ class _LoginPageState extends State<LoginPage> {
               GestureDetector(
                 onTap: _login,
                 child: Container(
-                  height: 55.h,
+                  height: 50.h,
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(10),
                     color: AppColors.buttomColor,
@@ -170,7 +175,11 @@ class _LoginPageState extends State<LoginPage> {
               ),
               SizedBox(height: 30.h),
               Center(
-                child: richText(text:"Don’t have an account?  ",subtext:"Sign Up",page:SignUpPage()),
+                child: RichTextWidget(
+                  text: "Don’t have an account?  ",
+                  subtext: "Sign Up",
+                  page: SignUpPage(),
+                ),
               ),
             ],
           ),
