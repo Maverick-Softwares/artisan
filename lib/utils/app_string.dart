@@ -2,4 +2,5 @@
 class AppString{
   static const app_title = "Artisan App";
   static const login_title = "Log In";
+  static const sign_up_title = "Sign Up";
 }

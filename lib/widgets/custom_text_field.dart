@@ -39,7 +39,7 @@ class AppTextField extends StatelessWidget {
           ),
 
           contentPadding: EdgeInsets.only(
-              left: 10.w, top: 10.h), // Adjust the left padding as needed
+              left: 10.w,bottom: 5.h), // Adjust the left padding as needed
         ),
       ),
     );

@@ -1,5 +1,6 @@
-// ignore_for_file: prefer_const_constructors
+// ignore_for_file: prefer_const_constructors, prefer_final_fields, depend_on_referenced_packages, unused_import
 
+import 'package:artisan/pages/signup_page.dart';
 import 'package:artisan/utils/app_colors.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/gestures.dart';
@@ -14,6 +15,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
+import '../widgets/rich_text.dart';
+
 class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);
 
@@ -25,6 +28,8 @@ class _LoginPageState extends State<LoginPage> {
   TextEditingController _phoneController = TextEditingController();
   TextEditingController _passwordController = TextEditingController();
   final _controller = Get.put(TextFieldController());
+
+
   void _login() async {
     String phone = _phoneController.text;
     String password = _passwordController.text;
@@ -106,7 +111,7 @@ class _LoginPageState extends State<LoginPage> {
                 ],
               ),
               SizedBox(
-                height: 15.h,
+                height: 10.h,
               ),
               Row(
                 children: [
@@ -197,29 +202,7 @@ class _LoginPageState extends State<LoginPage> {
               ),
               SizedBox(height: 30.h),
               Center(
-                child: RichText(
-                  text: TextSpan(
-                    text: "Don’t have an account?  ",
-                    style: TextStyle(
-                      fontSize: 16.sp,
-                      fontWeight: FontWeight.w400,
-                      color: Colors.black,
-                    ),
-                    children: [
-                      TextSpan(
-                        text: "Sign Up",
-                        style: TextStyle(
-                          fontSize: 18.sp,
-                          fontWeight: FontWeight.w600,
-                        ),
-                        recognizer: TapGestureRecognizer()
-                          ..onTap = () {
-                            // Handle sign up navigation
-                          },
-                      ),
-                    ],
-                  ),
-                ),
+                child: richText(text:"Don’t have an account?  ",subtext:"Sign Up",page:SignUpPage()),
               ),
             ],
           ),
