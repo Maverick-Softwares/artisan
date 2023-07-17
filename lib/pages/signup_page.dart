@@ -1,6 +1,7 @@
 // ignore_for_file: unused_field, depend_on_referenced_packages, prefer_final_fields, prefer_const_constructors, unused_import, use_key_in_widget_constructors, library_private_types_in_public_api
 
 import 'package:artisan/pages/login_page.dart';
+import 'package:artisan/pages/otp_page.dart';
 import 'package:artisan/utils/app_string.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/gestures.dart';
@@ -37,7 +38,11 @@ class _SignUpPageState extends State<SignUpPage> {
     String password = _passwordController.text;
     String confirmPassword = _confirmPasswordController.text;
 
+    // !pls delate -------------
+    Get.to(()=>OTPPage());
+
     if (name.isEmpty) {
+      
       Get.snackbar(
         'Oops!',
         'Name field cannot be empty!',

@@ -50,7 +50,7 @@ dev_dependencies:
   google_fonts: any
   get: any
   flutter_screenutil: any
-  cupertino_icons: any
+  otp_text_field: any
   
 
 # For information on the generic Dart part of this file, see the
