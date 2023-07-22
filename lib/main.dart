@@ -1,5 +1,6 @@
 // ignore_for_file: prefer_const_constructors, depend_on_referenced_packages
 import 'package:artisan/pages/add_expenses.dart';
+import 'package:artisan/pages/add_income_expense.dart';
 import 'package:artisan/pages/dashboard_navpage.dart';
 import 'package:artisan/pages/login_page.dart';
 import 'package:artisan/utils/app_colors.dart';
@@ -30,16 +31,15 @@ class _MyAppState extends State<MyApp> {
         splitScreenMode: true,
         builder: (context, child) {
           return GetMaterialApp(
-            debugShowCheckedModeBanner: false,
-            title: AppString.app_title,
-            theme: ThemeData(
-              scaffoldBackgroundColor: AppColors.scaffold_background_color,
-            ),
-            // initialRoute: login,
-            getPages: getPages,
-            // home: LoginPage(),
-            home:AddExpenses()
-          );
+              debugShowCheckedModeBanner: false,
+              title: AppString.app_title,
+              theme: ThemeData(
+                scaffoldBackgroundColor: AppColors.scaffold_background_color,
+              ),
+              // initialRoute: login,
+              getPages: getPages,
+              // home: LoginPage(),
+              home: AddIncomeExpense());
         });
   }
 }

@@ -68,8 +68,6 @@ class _AddExpensesState extends State<AddExpenses> {
                 SizedBox(
                   height: 30.h,
                 ),
-
-                
                 Row(
                   children: [
                     Container(
@@ -450,16 +448,16 @@ class _AddExpensesState extends State<AddExpenses> {
                   ],
                 ),
               ),
-              SizedBox(
-                width: 5.w,
-              ),
+              // SizedBox(
+              //   width: 5.w,
+              // ),
               IconButton(
                 onPressed: () {
                   setState(() {
                     rows.removeAt(index);
                   });
                 },
-                icon: Image.asset("assets/iconImage/close.png",height: 25.h,width: 25.w,),
+                icon: Image.asset("assets/iconImage/close.png",height: 22.h,width: 22.w,),
               ),
             ],
           ),

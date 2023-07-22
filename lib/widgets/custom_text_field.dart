@@ -19,7 +19,7 @@ class AppTextField extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       child: TextField(
-        keyboardType:keyboard_type,
+        keyboardType:TextInputType.text,
         controller: Controller,
         decoration: InputDecoration(
           hintText: hintText,
