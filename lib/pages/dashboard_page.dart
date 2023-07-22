@@ -1,7 +1,8 @@
-// ignore_for_file: avoid_unnecessary_containers, prefer_const_constructors, prefer_const_literals_to_create_immutables, sized_box_for_whitespace, sort_child_properties_last
+// ignore_for_file: avoid_unnecessary_containers, prefer_const_constructors, prefer_const_literals_to_create_immutables, sized_box_for_whitespace, sort_child_properties_last, unused_import, depend_on_referenced_packages
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class DashboardPage extends StatefulWidget {
@@ -21,7 +22,7 @@ class _DashboardPageState extends State<DashboardPage> {
             child: Column(
               children: [
                 SizedBox(
-                  height: 230.h, //70 for bottom
+                  height: 200.h, //70 for bottom
                   child: Stack(
                     children: [
                       Positioned(
@@ -80,8 +81,8 @@ class _DashboardPageState extends State<DashboardPage> {
                         ),
                       ),
                       Positioned(
-                        top: 100.h,
-                        height: 126.h,
+                        top: 70.h,
+                        height: 120.h,
                         left: 20.w,
                         right: 20.w,
                         child: Container(
@@ -114,15 +115,15 @@ class _DashboardPageState extends State<DashboardPage> {
                                         Text(
                                           "\$ 13,500",
                                           style: TextStyle(
-                                            fontSize: 20.sp,
+                                            fontSize: 18.sp,
                                             fontWeight: FontWeight.w500,
                                             color: Color(0xFF0065FF),
                                           ),
                                         ),
                                         Image.asset(
                                           "assets/iconImage/tk1.png",
-                                          width: 25.w,
-                                          height: 25.h,
+                                          width: 20.w,
+                                          height: 20.h,
                                         ),
                                       ],
                                     ),
@@ -158,15 +159,15 @@ class _DashboardPageState extends State<DashboardPage> {
                                         Text(
                                           "\$ 2,000",
                                           style: TextStyle(
-                                            fontSize: 20.sp,
+                                            fontSize: 18.sp,
                                             fontWeight: FontWeight.w500,
                                             color: Color(0xFF0065FF),
                                           ),
                                         ),
                                         Image.asset(
                                           "assets/iconImage/tk2.png",
-                                          width: 25.w,
-                                          height: 25.h,
+                                          width: 20.w,
+                                          height: 20.h,
                                         ),
                                       ],
                                     ),
@@ -202,7 +203,7 @@ class _DashboardPageState extends State<DashboardPage> {
                   ),
                 ),
                 SizedBox(
-                  height: 30.h,
+                  height: 15.h,
                 ),
                 Padding(
                   padding: EdgeInsets.symmetric(horizontal: 15.w),
@@ -241,7 +242,7 @@ class _DashboardPageState extends State<DashboardPage> {
                 ),
                 dashboardCard("Travel", "-\$385", "assets/images/plane1.png"),
                 SizedBox(
-                  height: 100.h,
+                  height: 50.h,
                 ),
               ],
             ),
@@ -256,7 +257,7 @@ class _DashboardPageState extends State<DashboardPage> {
       padding: EdgeInsets.symmetric(horizontal: 20.w),
       child: Container(
         width: double.infinity,
-        height: 84.h,
+        height: 60.h,
         decoration: BoxDecoration(
           color: Colors.white,
           borderRadius: BorderRadius.circular(10),
@@ -279,14 +280,14 @@ class _DashboardPageState extends State<DashboardPage> {
               child: Center(
                 child: Container(
                   width: 385,
-                  height: 84,
+                  height: 70,
                   child: Stack(
                     children: [
                       Positioned(
                         left: 0,
                         top: 0,
                         child: Container(
-                          height: 84,
+                          height: 70.h,
                           decoration: ShapeDecoration(
                             color: Colors.white,
                             shape: RoundedRectangleBorder(
@@ -297,20 +298,19 @@ class _DashboardPageState extends State<DashboardPage> {
                       ),
                       Positioned(
                         left: 80.w,
-                        top: 30.h,
+                        top: 18.h,
                         child: Text(
                           title,
-                          style: TextStyle(
+                          style: GoogleFonts.poppins(textStyle:  TextStyle(
                             color: Color(0xFF1E2944),
                             fontSize: 16.sp,
-                            fontFamily: 'Poppins',
                             fontWeight: FontWeight.w500,
-                          ),
+                          ),)
                         ),
                       ),
                       Positioned(
                         // left: 250,
-                        top: 17.h,
+                        top: 5.h,
                         right: 50.w,
                         child: Container(
                           width: 71.w,
@@ -331,7 +331,7 @@ class _DashboardPageState extends State<DashboardPage> {
                                 ),
                               ),
                               Positioned(
-                                top: 30.h,
+                                top: 25.h,
                                 child: Text(
                                   'Yesterday',
                                   style: TextStyle(
@@ -353,11 +353,11 @@ class _DashboardPageState extends State<DashboardPage> {
             ),
             Positioned(
               left: 20.w,
-              top: 18.h,
+              top: 10.h,
               child: Center(
                 child: Container(
-                  width: 50.w,
-                  height: 50.w,
+                  width: 40.w,
+                  height: 40.w,
                   decoration: BoxDecoration(
                     image: DecorationImage(
                       image: AssetImage(image),

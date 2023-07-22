@@ -1,16 +1,16 @@
 // ignore_for_file: use_key_in_widget_constructors, unused_field, prefer_final_fields, must_be_immutable, unused_import, depend_on_referenced_packages, unused_element, prefer_const_constructors
 
 import 'package:artisan/pages/set_password.dart';
-import 'package:artisan/utils/theme.dart';
+import 'package:artisan/utils/style.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
-import '../widgets/custom_text.dart';
 import '../widgets/custom_text_field.dart';
 import '../utils/app_colors.dart';
 import '../utils/app_string.dart';
+import '../widgets/violet_button.dart';
 
 class ForgotPassword extends StatefulWidget {
   @override
@@ -41,7 +41,7 @@ class _ForgotPasswordState extends State<ForgotPassword> {
     return Scaffold(
       body: SingleChildScrollView(
         child: Container(
-          padding: EdgeInsets.symmetric(horizontal: 20.w),
+          padding: EdgeInsets.symmetric(horizontal: 25.w),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -86,25 +86,11 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                 ],
               ),
               SizedBox(
-                height: 50.h,
+                height: 40.h,
               ),
               GestureDetector(
                 onTap: _forGot,
-                child: Container(
-                  height: 50.h,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(10),
-                    color: AppColors.buttomColor,
-                  ),
-                  child: Center(
-                    child: CustomText(
-                      text: 'Submit',
-                      textColor: Colors.white,
-                      fontSize: 20.sp,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                ),
+                child: VioletButton(title: "Submit")
               ),
             ],
           ),

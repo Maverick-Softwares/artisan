@@ -21,3 +21,9 @@ TextStyle get forgotStyle{
       textStyle: TextStyle(fontSize: 14.sp,fontWeight: FontWeight.w400)
   );
 }
+
+TextStyle get buttonStyle{
+  return GoogleFonts.poppins(
+      textStyle: TextStyle(fontSize: 18.sp,fontWeight: FontWeight.bold,color: Colors.white)
+  );
+}

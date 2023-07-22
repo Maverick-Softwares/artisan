@@ -25,16 +25,16 @@ class RichTextWidget extends StatelessWidget {
       text: TextSpan(
         text: text,
         style: TextStyle(
-          fontSize: 16.sp,
+          fontSize: 14.sp,
           fontWeight: FontWeight.w500,
-          color: Colors.black,
+          color: Colors.black.withOpacity(0.5),
         ),
         children: [
           TextSpan(
             text: subtext,
             style: TextStyle(
-              fontSize: 18.sp,
-              fontWeight: FontWeight.w600,
+              fontSize: 14.sp,
+              fontWeight: FontWeight.bold,
             ),
             recognizer: TapGestureRecognizer()
               ..onTap = () {

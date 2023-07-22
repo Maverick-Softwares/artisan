@@ -5,11 +5,11 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:dropdown_button2/dropdown_button2.dart';
 import '../utils/app_colors.dart';
 import '../utils/app_string.dart';
-import '../utils/theme.dart';
-import '../widgets/custom_text.dart';
+import '../utils/style.dart';
 import '../widgets/custom_text_field.dart';
 import 'package:get/get.dart';
 
+import '../widgets/violet_button.dart';
 import 'dashboard_navpage.dart';
 
 class AddExpenses extends StatefulWidget {
@@ -58,7 +58,7 @@ class _AddExpensesState extends State<AddExpenses> {
                 Center(
                   child: Image.asset(
                     "assets/images/incomes.png",
-                    height: 250.h,
+                    height: 200.h,
                   ),
                 ),
                 Text(
@@ -66,13 +66,13 @@ class _AddExpensesState extends State<AddExpenses> {
                   style: loginStyle,
                 ),
                 SizedBox(
-                  height: 30.h,
+                  height: 20.h,
                 ),
                 Row(
                   children: [
                     Container(
-                      height: 55.h,
-                      width: 150.w,
+                      height: 45.h,
+                      width: 140.w,
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(10.sp),
                         color: Colors.white,
@@ -96,7 +96,7 @@ class _AddExpensesState extends State<AddExpenses> {
                             style: TextStyle(
                               fontSize: 15.sp,
                               color: Colors.black,
-                              fontWeight: FontWeight.bold,
+                              fontWeight: FontWeight.w500,
                             ),
                           ),
                           items: items
@@ -108,7 +108,7 @@ class _AddExpensesState extends State<AddExpenses> {
                                     style: TextStyle(
                                       fontSize: 15.sp,
                                       color: Colors.black,
-                                      fontWeight: FontWeight.bold,
+                                      fontWeight: FontWeight.w500,
                                     ),
                                   ),
                                 ),
@@ -225,45 +225,17 @@ class _AddExpensesState extends State<AddExpenses> {
                     // Call the function to add a new row
                     addRow();
                   },
-                  child: Container(
-                    height: 60.h,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(10),
-                      color: AppColors.buttomColor,
-                    ),
-                    child: Center(
-                      child: CustomText(
-                        text: 'Add One more',
-                        textColor: Colors.white,
-                        fontSize: 20.sp,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                  ),
+                  child:  VioletButton(title: "Add One More")
                 ),
                 SizedBox(
-                  height: 50.h,
+                  height: 30.h,
                 ),
                 GestureDetector(
                   // onTap: _signUp,
                   onTap: () {
                     Get.to(() => DashboardNavPage());
                   },
-                  child: Container(
-                    height: 60.h,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(10),
-                      color: AppColors.buttomColor,
-                    ),
-                    child: Center(
-                      child: CustomText(
-                        text: 'Continue',
-                        textColor: Colors.white,
-                        fontSize: 20.sp,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                  ),
+                  child: VioletButton(title: "Continue")
                 ),
                 SizedBox(
                   height: 20.h,
@@ -271,17 +243,17 @@ class _AddExpensesState extends State<AddExpenses> {
                 GestureDetector(
                   // onTap: _signUp,
                   child: Container(
-                    height: 60.h,
+                    height: 50.h,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(10),
                       color: Colors.grey,
                     ),
                     child: Center(
-                      child: CustomText(
-                        text: 'Skip for now',
-                        textColor: Colors.white,
-                        fontSize: 20.sp,
-                        fontWeight: FontWeight.bold,
+                      child:  Text(
+                        'Skip for now',
+                        style: TextStyle(
+                          fontSize: 16.sp,color: Colors.white,fontWeight: FontWeight.bold
+                        ),
                       ),
                     ),
                   ),
@@ -312,8 +284,8 @@ class _AddExpensesState extends State<AddExpenses> {
           child: Row(
             children: [
               Container(
-                height: 55.h,
-                width: 150.w,
+                height: 45.h,
+                width: 140.w,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(10.sp),
                   color: Colors.white,
@@ -338,7 +310,7 @@ class _AddExpensesState extends State<AddExpenses> {
                             style: TextStyle(
                               fontSize: 15.sp,
                               color: Colors.black,
-                              fontWeight: FontWeight.bold,
+                              fontWeight: FontWeight.w500,
                             ),
                           )
                         : Text(
@@ -346,7 +318,7 @@ class _AddExpensesState extends State<AddExpenses> {
                             style: TextStyle(
                               fontSize: 15.sp,
                               color: Colors.black,
-                              fontWeight: FontWeight.bold,
+                              fontWeight: FontWeight.w500,
                             ),
                           ),
                     items: items
@@ -358,7 +330,7 @@ class _AddExpensesState extends State<AddExpenses> {
                               style: TextStyle(
                                 fontSize: 15.sp,
                                 color: Colors.black,
-                                fontWeight: FontWeight.bold,
+                                fontWeight: FontWeight.w500,
                               ),
                             ),
                           ),

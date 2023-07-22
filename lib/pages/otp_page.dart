@@ -4,11 +4,12 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter/material.dart';
 import '../utils/app_colors.dart';
 import '../utils/app_string.dart';
-import '../utils/theme.dart';
-import '../widgets/custom_text.dart';
+import '../utils/style.dart';
 import 'package:otp_text_field/otp_text_field.dart';
 import 'package:otp_text_field/style.dart';
 import 'package:get/get.dart';
+
+import '../widgets/violet_button.dart';
 
 class OTPPage extends StatefulWidget {
   final String phone;
@@ -82,27 +83,13 @@ class _OTPPageState extends State<OTPPage> {
                   ),
                 ),
                 SizedBox(
-                  height: 70.h,
+                  height: 60.h,
                 ),
                 GestureDetector(
                   onTap: () {
                     Get.to(() => AddIncomePage());
                   },
-                  child: Container(
-                    height: 55.h,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(10),
-                      color: AppColors.buttomColor,
-                    ),
-                    child: Center(
-                      child: CustomText(
-                        text: 'Verify',
-                        textColor: Colors.white,
-                        fontSize: 20.sp,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                  ),
+                  child: VioletButton(title: "Verify")
                 ),
               ],
             ),

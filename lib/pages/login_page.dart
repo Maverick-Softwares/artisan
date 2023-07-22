@@ -9,15 +9,15 @@ import 'package:flutter/material.dart';
 
 import '../controllers/text_field_controller.dart';
 import '../utils/app_string.dart';
-import '../utils/theme.dart';
+import '../utils/style.dart';
 import '../widgets/custom_password_text_field.dart';
-import '../widgets/custom_text.dart';
 import '../widgets/custom_text_field.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import '../widgets/rich_text.dart';
+import '../widgets/violet_button.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);
@@ -154,21 +154,7 @@ class _LoginPageState extends State<LoginPage> {
                 ),
                 GestureDetector(
                   onTap: _login,
-                  child: Container(
-                    height: 55.h,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(10),
-                      color: AppColors.buttomColor,
-                    ),
-                    child: Center(
-                      child: CustomText(
-                        text: 'Login',
-                        textColor: Colors.white,
-                        fontSize: 20.sp,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                  ),
+                  child: VioletButton(title: "Login"),
                 ),
                 SizedBox(height: 30.h),
                 Center(

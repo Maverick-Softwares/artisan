@@ -1,5 +1,6 @@
 // ignore_for_file: prefer_const_constructors, unnecessary_import, implementation_imports, unused_import, unused_field, prefer_final_fields, depend_on_referenced_packages, unused_element, unused_local_variable
 
+import 'package:artisan/pages/dashboard_navpage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
@@ -8,9 +9,9 @@ import 'package:get/get.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import '../utils/app_colors.dart';
 import '../utils/app_string.dart';
-import '../utils/theme.dart';
+import '../utils/style.dart';
 import '../widgets/custom_password_text_field.dart';
-import '../widgets/custom_text.dart';
+import '../widgets/violet_button.dart';
 
 class SetPassword extends StatefulWidget {
   const SetPassword({super.key});
@@ -26,6 +27,8 @@ class _SetPasswordState extends State<SetPassword> {
   void _setPass() async{
     String password = _newpasswordController.text;
     String confirmPassword = _confirmPasswordController.text;
+
+    Get.to(()=> DashboardNavPage() );
 
     if (password.isEmpty) {
       Get.snackbar(
@@ -67,7 +70,7 @@ class _SetPasswordState extends State<SetPassword> {
     return Scaffold(
       body: SingleChildScrollView(
         child: Container(
-          padding: EdgeInsets.symmetric(horizontal: 20.w),
+          padding: EdgeInsets.symmetric(horizontal: 25.w),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -136,21 +139,7 @@ class _SetPasswordState extends State<SetPassword> {
               ),
               GestureDetector(
                 onTap: _setPass,
-                child: Container(
-                  height: 50.h,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(10),
-                    color: AppColors.buttomColor,
-                  ),
-                  child: Center(
-                    child: CustomText(
-                      text: 'Continue',
-                      textColor: Colors.white,
-                      fontSize: 20.sp,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                ),
+                child: VioletButton(title: "Continue")
               ),
             ],
           ),

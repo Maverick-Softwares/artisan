@@ -5,7 +5,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../utils/app_colors.dart';
-import '../widgets/custom_text.dart';
+import '../utils/style.dart';
+import '../widgets/violet_button.dart';
 
 class AddIncomeExpense extends StatefulWidget {
   const AddIncomeExpense({super.key});
@@ -63,13 +64,13 @@ class _AddIncomeExpenseState extends State<AddIncomeExpense> {
         elevation: 2,
         title: Text(
           "Add Expenses",
-          style: TextStyle(fontSize: 20.sp, fontWeight: FontWeight.bold),
+          style: TextStyle(fontSize: 18.sp, fontWeight: FontWeight.bold),
         ),
         centerTitle: true,
         leading: Image.asset(
           "assets/iconImage/left-arrow1.png",
-          height: 30.h,
-          width: 30.w,
+          height: 20.h,
+          width: 20.w,
         ),
       ),
       body: SingleChildScrollView(
@@ -78,10 +79,10 @@ class _AddIncomeExpenseState extends State<AddIncomeExpense> {
           child: Column(
             children: [
               SizedBox(
-                height: 100.h,
+                height: 80.h,
               ),
               Container(
-                height: 60.h,
+                height: 50.h,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(10.sp),
                   color: Colors.white,
@@ -101,7 +102,7 @@ class _AddIncomeExpenseState extends State<AddIncomeExpense> {
                   child: TextField(
                     keyboardType: TextInputType.number,
                     style: TextStyle(
-                      fontSize: 24.sp,
+                      fontSize: 20.sp,
                       fontWeight: FontWeight.bold,
                       color: Color(0xFF0065FF),
                     ),
@@ -112,7 +113,7 @@ class _AddIncomeExpenseState extends State<AddIncomeExpense> {
                       hintText: "\$ 0",
                       hintStyle: TextStyle(
                           color: Color(0xFF0065FF),
-                          fontSize: 24.sp,
+                          fontSize: 20.sp,
                           fontWeight: FontWeight.bold),
                       focusedBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(30),
@@ -155,21 +156,7 @@ class _AddIncomeExpenseState extends State<AddIncomeExpense> {
               ),
               GestureDetector(
                 onTap: _save,
-                child: Container(
-                  height: 55.h,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(10),
-                    color: AppColors.buttomColor,
-                  ),
-                  child: Center(
-                    child: CustomText(
-                      text: 'SAVE',
-                      textColor: Colors.white,
-                      fontSize: 20.sp,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                ),
+                child: VioletButton(title: "SAVE")
               ),
             ],
           ),

@@ -11,13 +11,13 @@ import '../controllers/text_field_controller.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../utils/app_colors.dart';
-import '../utils/theme.dart';
+import '../utils/style.dart';
 import '../widgets/custom_password_text_field.dart';
-import '../widgets/custom_text.dart';
 import '../widgets/custom_text_field.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import '../widgets/rich_text.dart';
+import '../widgets/violet_button.dart';
 
 class SignUpPage extends StatefulWidget {
   const SignUpPage({Key? key});
@@ -103,7 +103,7 @@ class _SignUpPageState extends State<SignUpPage> {
                 Padding(
                   padding: EdgeInsets.symmetric(horizontal: 5.w),
                   child: Center(
-                    child: Image.asset("assets/images/signup.png", height: 250.h),
+                    child: Image.asset("assets/images/signup.png", height: 200.h),
                   ),
                 ),
                 Text(
@@ -111,7 +111,7 @@ class _SignUpPageState extends State<SignUpPage> {
                   style: loginStyle,
                 ),
                 SizedBox(
-                  height: 15.h,
+                  height: 10.h,
                 ),
                 Row(
                   children: [
@@ -189,21 +189,7 @@ class _SignUpPageState extends State<SignUpPage> {
                 ),
                 GestureDetector(
                   onTap: _signUp,
-                  child: Container(
-                    height: 55.h,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(10),
-                      color: AppColors.buttomColor,
-                    ),
-                    child: Center(
-                      child: CustomText(
-                        text: 'Continue',
-                        textColor: Colors.white,
-                        fontSize: 20.sp,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                  ),
+                  child: VioletButton(title: "Continue")
                 ),
                 SizedBox(height: 30.h),
                 Center(

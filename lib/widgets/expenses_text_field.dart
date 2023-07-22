@@ -18,7 +18,7 @@ class ExpensesTextFeild extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 60.h,
+      height: 50.h,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(10.sp),
         color: Colors.white,
@@ -40,7 +40,7 @@ class ExpensesTextFeild extends StatelessWidget {
           child: TextField(
             keyboardType: TextInputType.text,
             style: TextStyle(
-              fontSize: 18.sp,
+              fontSize: 16.sp,
             ),
             controller: Controller,
             decoration: InputDecoration(

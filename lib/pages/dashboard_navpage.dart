@@ -27,7 +27,7 @@ class _DashboardNavPageState extends State<DashboardNavPage> {
     return [
       AddIncomeExpense(),
       DashboardPage(),
-      SignUpPage()
+      AddIncomeExpense()
     ];
   }
 
@@ -101,7 +101,7 @@ class _DashboardNavPageState extends State<DashboardNavPage> {
         duration: Duration(milliseconds: 200),
       ),
       navBarStyle: NavBarStyle.style15,
-      navBarHeight: 65.h, 
+      navBarHeight: 55.h, 
     );
   }
 }
