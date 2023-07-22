@@ -52,7 +52,7 @@ dev_dependencies:
   flutter_screenutil: any
   otp_text_field: any
   dropdown_button2: any
-  
+  persistent_bottom_nav_bar: any
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec

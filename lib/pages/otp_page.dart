@@ -89,7 +89,7 @@ class _OTPPageState extends State<OTPPage> {
                     Get.to(() => AddIncomePage());
                   },
                   child: Container(
-                    height: 50.h,
+                    height: 55.h,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(10),
                       color: AppColors.buttomColor,

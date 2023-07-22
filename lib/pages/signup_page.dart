@@ -190,7 +190,7 @@ class _SignUpPageState extends State<SignUpPage> {
                 GestureDetector(
                   onTap: _signUp,
                   child: Container(
-                    height: 50.h,
+                    height: 55.h,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(10),
                       color: AppColors.buttomColor,

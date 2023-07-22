@@ -1,4 +1,5 @@
 // ignore_for_file: prefer_const_constructors, depend_on_referenced_packages
+import 'package:artisan/pages/dashboard_navpage.dart';
 import 'package:artisan/pages/login_page.dart';
 import 'package:artisan/utils/app_colors.dart';
 import 'package:artisan/utils/app_string.dart';
@@ -33,9 +34,10 @@ class _MyAppState extends State<MyApp> {
             theme: ThemeData(
               scaffoldBackgroundColor: AppColors.scaffold_background_color,
             ),
-            initialRoute: login,
+            // initialRoute: login,
             getPages: getPages,
-            home: LoginPage(),
+            // home: LoginPage(),
+            home:DashboardNavPage()
           );
         });
   }

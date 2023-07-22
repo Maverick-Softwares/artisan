@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
+// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, prefer_final_fields
 
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -8,6 +8,10 @@ import '../utils/app_string.dart';
 import '../utils/theme.dart';
 import '../widgets/custom_text.dart';
 import '../widgets/custom_text_field.dart';
+import 'package:get/get.dart';
+
+import 'dashboard_navpage.dart';
+import 'dashboard_page.dart';
 
 class AddExpenses extends StatefulWidget {
   const AddExpenses({super.key});
@@ -17,15 +21,188 @@ class AddExpenses extends StatefulWidget {
 }
 
 class _AddExpensesState extends State<AddExpenses> {
-  final List<String> items = [
-    'Home Rent1',
-    'Home Rent2',
-    'Home Rent3',
-  ];
+  final List<String> items = ['Home Rent1', 'Home Rent2', 'Home Rent3'];
 
   String? selectedValue;
   final TextEditingController textEditingController = TextEditingController();
   TextEditingController _amountController = TextEditingController();
+
+  List<Widget> rows = []; // List to store the rows
+
+  // Function to add a new row to the list
+  void addRow() {
+    setState(() {
+      rows.add(buildRow());
+    });
+  }
+
+  // Function to build the expanded row
+  Widget buildRow() {
+    return Padding(
+      padding: EdgeInsets.symmetric(vertical: 10.h),
+      child: GestureDetector(
+        onTap: () {
+          // Call the function to toggle Row expansion
+          toggleRowExpansion();
+        },
+        child: AnimatedContainer(
+          duration: Duration(milliseconds: 300),
+          height: isRowExpanded ? 120.h : 55.h,
+          child: Row(
+            children: [
+              Container(
+                height: 55.h,
+                width: 150.w,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(10.sp),
+                  color: Colors.white,
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.black.withOpacity(0.2),
+                      spreadRadius: 2,
+                      blurRadius: 3,
+                      offset: Offset(
+                        0,
+                        3,
+                      ), // Offset for the shadow (horizontal, vertical)
+                    ),
+                  ],
+                ),
+                child: DropdownButtonHideUnderline(
+                  child: DropdownButton2<String>(
+                    isExpanded: true,
+                    hint: Text(
+                      'Home Rent',
+                      style: TextStyle(
+                        fontSize: 15.sp,
+                        color: Colors.black,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    items: items
+                        .map(
+                          (item) => DropdownMenuItem(
+                            value: item,
+                            child: Text(
+                              item,
+                              style: TextStyle(
+                                fontSize: 15.sp,
+                                color: Colors.black,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                          ),
+                        )
+                        .toList(),
+                    value: selectedValue,
+                    onChanged: (value) {
+                      setState(() {
+                        selectedValue = value;
+                      });
+                    },
+                    buttonStyleData: ButtonStyleData(
+                      padding: EdgeInsets.symmetric(horizontal: 16.w),
+                      height: 40.h,
+                      width: 200.w,
+                    ),
+                    dropdownStyleData: DropdownStyleData(
+                      maxHeight: 200.h,
+                    ),
+                    menuItemStyleData: MenuItemStyleData(
+                      height: 40.h,
+                    ),
+                    dropdownSearchData: DropdownSearchData(
+                      searchController: textEditingController,
+                      searchInnerWidgetHeight: 50,
+                      searchInnerWidget: Container(
+                        height: 50,
+                        padding: const EdgeInsets.only(
+                          top: 8,
+                          bottom: 4,
+                          right: 8,
+                          left: 8,
+                        ),
+                        child: TextFormField(
+                          expands: true,
+                          maxLines: null,
+                          controller: textEditingController,
+                          decoration: InputDecoration(
+                            isDense: true,
+                            contentPadding: const EdgeInsets.symmetric(
+                              horizontal: 10,
+                              vertical: 8,
+                            ),
+                            hintText: 'Search for an item...',
+                            hintStyle: TextStyle(
+                              fontSize: 12.sp,
+                              color: Colors.black,
+                              fontWeight: FontWeight.bold,
+                            ),
+                            border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(8),
+                            ),
+                          ),
+                        ),
+                      ),
+                      searchMatchFn: (item, searchValue) {
+                        return item.value.toString().contains(searchValue);
+                      },
+                    ),
+                    //This to clear the search value when you close the menu
+                    onMenuStateChange: (isOpen) {
+                      if (!isOpen) {
+                        textEditingController.clear();
+                      }
+                    },
+                  ),
+                ),
+              ),
+              SizedBox(
+                width: 20.w,
+              ),
+              Expanded(
+                child: Row(
+                  children: [
+                    Image.asset(
+                      "assets/iconImage/hand1.png",
+                      width: 25.w,
+                      height: 25.h,
+                    ),
+                    Expanded(
+                      child: AppTextField(
+                        Controller: _amountController,
+                        hintText: 'Amount',
+                        keyboard_type: TextInputType.number,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              SizedBox(
+                width: 10.w,
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+
+  bool isRowExpanded = false;
+
+  // Function to toggle the expansion of the Row
+  void toggleRowExpansion() {
+    setState(() {
+      isRowExpanded = !isRowExpanded;
+    });
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    // Initial row
+    rows.add(buildRow());
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -50,143 +227,25 @@ class _AddExpensesState extends State<AddExpenses> {
                 SizedBox(
                   height: 30.h,
                 ),
-                Row(
-                  children: [
-                    Container(
-                      height: 55.h,
-                      width: 150.w,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(10.sp),
-                        color: Colors.white,
-                        boxShadow: [
-                          BoxShadow(
-                            color: Colors.black.withOpacity(0.2),
-                            spreadRadius: 2,
-                            blurRadius: 3,
-                            offset: Offset(0,
-                                3), // Offset for the shadow (horizontal, vertical)
-                          ),
-                        ],
-                      ),
-                      child: DropdownButtonHideUnderline(
-                        child: DropdownButton2<String>(
-                          isExpanded: true,
-                          hint: Text(
-                            'Home Rent',
-                            style: TextStyle(
-                                fontSize: 15.sp,
-                                color: Colors.black,
-                                fontWeight: FontWeight.bold),
-                          ),
-                          items: items
-                              .map((item) => DropdownMenuItem(
-                                    value: item,
-                                    child: Text(
-                                      item,
-                                      style: TextStyle(
-                                          fontSize: 15.sp,
-                                          color: Colors.black,
-                                          fontWeight: FontWeight.bold),
-                                    ),
-                                  ))
-                              .toList(),
-                          value: selectedValue,
-                          onChanged: (value) {
-                            setState(() {
-                              selectedValue = value;
-                            });
-                          },
-                          buttonStyleData: ButtonStyleData(
-                            padding: EdgeInsets.symmetric(horizontal: 16.w),
-                            height: 40.h,
-                            width: 200.w,
-                          ),
-                          dropdownStyleData: DropdownStyleData(
-                            maxHeight: 200.h,
-                          ),
-                          menuItemStyleData: MenuItemStyleData(
-                            height: 40.h,
-                          ),
-                          dropdownSearchData: DropdownSearchData(
-                            searchController: textEditingController,
-                            searchInnerWidgetHeight: 50,
-                            searchInnerWidget: Container(
-                              height: 50,
-                              padding: const EdgeInsets.only(
-                                top: 8,
-                                bottom: 4,
-                                right: 8,
-                                left: 8,
-                              ),
-                              child: TextFormField(
-                                expands: true,
-                                maxLines: null,
-                                controller: textEditingController,
-                                decoration: InputDecoration(
-                                  isDense: true,
-                                  contentPadding: const EdgeInsets.symmetric(
-                                    horizontal: 10,
-                                    vertical: 8,
-                                  ),
-                                  hintText: 'Search for an item...',
-                                  hintStyle: TextStyle(
-                                      fontSize: 12.sp,
-                                      color: Colors.black,
-                                      fontWeight: FontWeight.bold),
-                                  border: OutlineInputBorder(
-                                    borderRadius: BorderRadius.circular(8),
-                                  ),
-                                ),
-                              ),
-                            ),
-                            searchMatchFn: (item, searchValue) {
-                              return item.value
-                                  .toString()
-                                  .contains(searchValue);
-                            },
-                          ),
-                          //This to clear the search value when you close the menu
-                          onMenuStateChange: (isOpen) {
-                            if (!isOpen) {
-                              textEditingController.clear();
-                            }
-                          },
-                        ),
-                      ),
-                    ),
-                    SizedBox(
-                      width: 20.w,
-                    ),
-                    Expanded(
-                      child: Row(
-                        children: [
-                          Image.asset(
-                            "assets/iconImage/hand1.png",
-                            width: 25.w,
-                            height: 25.h,
-                          ),
-                          Expanded(
-                            child: AppTextField(
-                              Controller: _amountController,
-                              hintText: 'Amount',
-                              keyboard_type: TextInputType.number,
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                    SizedBox(
-                      width: 10.w,
-                    ),
-                  ],
+                // Display the list of rows using ListView.builder
+                ListView.builder(
+                  shrinkWrap: true,
+                  physics: NeverScrollableScrollPhysics(),
+                  itemCount: rows.length,
+                  itemBuilder: (context, index) {
+                    return rows[index];
+                  },
                 ),
                 SizedBox(
                   height: 30.h,
                 ),
                 GestureDetector(
-                  // onTap: _signUp,
+                  onTap: () {
+                    // Call the function to add a new row
+                    addRow();
+                  },
                   child: Container(
-                    height: 60.h,
+                    height: 55.h,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(10),
                       color: AppColors.buttomColor,
@@ -206,8 +265,11 @@ class _AddExpensesState extends State<AddExpenses> {
                 ),
                 GestureDetector(
                   // onTap: _signUp,
+                  onTap: (){
+                    Get.to(()=>DashboardNavPage());
+                  },
                   child: Container(
-                    height: 60.h,
+                    height: 55.h,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(10),
                       color: AppColors.buttomColor,
@@ -228,7 +290,7 @@ class _AddExpensesState extends State<AddExpenses> {
                 GestureDetector(
                   // onTap: _signUp,
                   child: Container(
-                    height: 60.h,
+                    height: 55.h,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(10),
                       color: Colors.grey,
