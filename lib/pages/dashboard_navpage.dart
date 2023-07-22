@@ -10,6 +10,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'dart:developer';
 import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
 
+import 'add_income_expense.dart';
+
 class DashboardNavPage extends StatefulWidget {
   const DashboardNavPage({super.key});
 
@@ -23,7 +25,7 @@ class _DashboardNavPageState extends State<DashboardNavPage> {
 
   List<Widget> _buildScreens() {
     return [
-      LoginPage(),
+      AddIncomeExpense(),
       DashboardPage(),
       SignUpPage()
     ];
